@@ -73,4 +73,6 @@ llamafactory-cli train training_config/qwen_dpo.yaml
 ```
 
 ## Inference
-
+```bash
+python inference.py
+```
