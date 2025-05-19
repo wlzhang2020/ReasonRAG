@@ -80,5 +80,5 @@ llamafactory-cli train training_config/qwen_dpo.yaml
 
 ## Inference
 ```bash
-python inference.py --dataset_name hotpotqa --model $Model_Name --
+python inference.py --dataset_name hotpotqa --model $Model_Name
 ```
