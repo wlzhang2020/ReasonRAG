@@ -62,17 +62,12 @@ Download QA dataset from huggingface [RUC-NLPIR/FlashRAG_datasets](https://huggi
 
 ## Data Generation
 ```bash
-# Install LLaMA Factory
-git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
-cd LLaMA-Factory
-pip install -e ".[torch,metrics]"
-
-# Set the dataset path before prefrence optimization
-llamafactory-cli train training_config/qwen_dpo.yaml
+python data_generation.py --dataset_name popqa --model gpt-4o
+python data_generation.py --dataset_name hotpotqa --model gpt-4o
+python data_generation.py --dataset_name 2wikimultihopqa --model gpt-4o
 ```
 
 ## Training
-
 ```bash
 # Install LLaMA Factory
 git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
@@ -85,5 +80,5 @@ llamafactory-cli train training_config/qwen_dpo.yaml
 
 ## Inference
 ```bash
-python inference.py
+python inference.py --dataset_name hotpotqa --model $Model_Name --
 ```
