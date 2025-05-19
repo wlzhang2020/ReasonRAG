@@ -1,1 +1,32 @@
-# ReasonRAG
+# ReasonRAG: Enhancing Agentic RAG with Process-Supervised Reinforcement Learning
+
+# Overview
+Recent advancements in outcome-supervised Reinforcement Learning (RL), exemplified by OpenAI's O1 and DeepMind's R1, have demonstrated remarkable improvements in language model (LLM) reasoning capabilities. Integrating outcome-supervised RL with search engines presents another promising avenue for boosting LLM reasoning. However, outcome-supervised RL often grapples with challenges such as sparse reward, training instability, and inefficient exploration.
+
+To address these limitations, process-supervised RL emerges as a compelling solution for enhancing Agentic RAG, offering the advantage of fine-grained rewards. We introduce ReasonRAG, a process-supervised method designed to refine Agentic RAG's strategic preferences.
+
+Our approach consists of three key steps:
+
+1. We leverage Monte Carlo Tree Search (MCTS) to generate process-supervised rollouts, yielding rich data on process-level strategic preferences.
+2. We then employ Direct Preference Optimization (DPO) to effectively optimize these strategic preferences within the Agentic RAG framework.
+3. Finally, we construct an Agentic RAG pipeline that enables the LLM to autonomously generate queries, extract evidence, and formulate answers.
+We provide the dataset we constructed and links to our trained models below.
+
+* **RAG_ProGuide Dataset:** [https://huggingface.co/datasets/wlzhang98/RAG_ProGuide](https://huggingface.co/datasets/wlzhang98/RAG_ProGuide)
+* **Trained Models:** [Qwen2.5-7B-Instruct-ReasonRAG](https://huggingface.co/wlzhang98/Qwen2.5-7B-Instruct-ReasonRAG)
+* **Trained Lora Models:** [Qwen2.5-7B-Instruct-RAG-Lora](https://huggingface.co/wlzhang98/Qwen2.5-7B-Instruct-RAG-Lora)
+
+# Method
+We employ process-supervised RL to enhance Agentic RAG capabilities:
+1. Generate process-supervised reward data.
+2. Policy Preference Optimization
+3. Agentic RAG Inference
+
+# Data
+We randomly data from PopQA, HotpotQA, 2WikimultihopQA to generate process-supervised preference data. Then, we use GPT-4o as the policy model to generate rollout data. The generated process-supervised data, namely RAG-ProGuide is available at:  [https://huggingface.co/datasets/wlzhang98/RAG_ProGuide](https://huggingface.co/datasets/wlzhang98/RAG_ProGuide)
+
+# Quick Start
+## Environment Settings
+
+
+
