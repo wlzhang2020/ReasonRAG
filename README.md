@@ -65,6 +65,7 @@ Download QA dataset from huggingface [RUC-NLPIR/FlashRAG_datasets](https://huggi
 python data_generation.py --dataset_name popqa --model gpt-4o
 python data_generation.py --dataset_name hotpotqa --model gpt-4o
 python data_generation.py --dataset_name 2wikimultihopqa --model gpt-4o
+python preference_data_generation.py 
 ```
 
 ## Training
