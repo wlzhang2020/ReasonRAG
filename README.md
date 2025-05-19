@@ -60,6 +60,17 @@ python -m flashrag.retriever.index_builder \
 
 Download QA dataset from huggingface [RUC-NLPIR/FlashRAG_datasets](https://huggingface.co/datasets/RUC-NLPIR/FlashRAG_datasets)
 
+## Data Generation
+```bash
+# Install LLaMA Factory
+git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
+cd LLaMA-Factory
+pip install -e ".[torch,metrics]"
+
+# Set the dataset path before prefrence optimization
+llamafactory-cli train training_config/qwen_dpo.yaml
+```
+
 ## Training
 
 ```bash
@@ -68,7 +79,7 @@ git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
 cd LLaMA-Factory
 pip install -e ".[torch,metrics]"
 
-# Download RAG-ProGuide and set the dataset path as yours
+# Set the dataset path before prefrence optimization
 llamafactory-cli train training_config/qwen_dpo.yaml
 ```
 
