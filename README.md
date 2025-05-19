@@ -27,6 +27,50 @@ We randomly data from PopQA, HotpotQA, 2WikimultihopQA to generate process-super
 
 # Quick Start
 ## Environment Settings
+Construct [FlashRAG](https://github.com/RUC-NLPIR/FlashRAG) environments:
+```bash
+conda create --name reasonrag python=3.10.16
+conda activate reasonrag
+pip install flashrag-dev --pre
+pip install flashrag-dev[full]
+pip install vllm>=0.4.1
+pip install deepspeed
+```
 
+## Data Preparation
 
+Download wikidump as the corpus for retrieval
+
+```bash
+# Download wikidump
+wget https://archive.org/download/enwiki-20181220/enwiki-20181220-pages-articles.xml.bz2
+
+# Build index
+python -m flashrag.retriever.index_builder \
+  --retrieval_method bge \
+  --model_path /BAAI/bge-base-en-v1.5 \
+  --corpus_path indexes/wiki18.jsonl \
+  --save_dir indexes/ \
+  --use_fp16 \
+  --max_length 512 \
+  --batch_size 256 \
+  --pooling_method mean \
+  --faiss_type Flat 
+```
+
+Download QA dataset from huggingface [RUC-NLPIR/FlashRAG_datasets](https://huggingface.co/datasets/RUC-NLPIR/FlashRAG_datasets)
+
+## Training
+
+```bash
+# Install LLaMA Factory
+git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
+cd LLaMA-Factory
+pip install -e ".[torch,metrics]"
+
+# Download RAG-ProGuide and set the dataset path as yours
+llamafactory-cli train training_config/qwen_dpo.yaml
+```
+
+## Inference
 
