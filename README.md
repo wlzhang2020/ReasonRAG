@@ -12,9 +12,9 @@ Our approach consists of three key steps:
 3. Finally, we construct an Agentic RAG pipeline that enables the LLM to autonomously generate queries, extract evidence, and formulate answers.
 We provide the dataset we constructed and links to our trained models below.
 
-* **RAG_ProGuide Dataset:** [https://huggingface.co/datasets/wlzhang98/RAG_ProGuide](https://huggingface.co/datasets/wlzhang98/RAG_ProGuide)
-* **Trained Models:** [Qwen2.5-7B-Instruct-ReasonRAG](https://huggingface.co/wlzhang98/Qwen2.5-7B-Instruct-ReasonRAG)
-* **Trained Lora Models:** [Qwen2.5-7B-Instruct-RAG-Lora](https://huggingface.co/wlzhang98/Qwen2.5-7B-Instruct-RAG-Lora)
+* **RAG_ProGuide Dataset:** [https://huggingface.co/datasets/reasonrag/RAG_ProGuide](https://huggingface.co/datasets/reasonrag/RAG_ProGuide)
+* **Trained Models:** [Qwen2.5-7B-Instruct-ReasonRAG](https://huggingface.co/reasonrag/Qwen2.5-7B-Instruct-ReasonRAG)
+* **Trained Lora Models:** [Qwen2.5-7B-Instruct-RAG-Lora](https://huggingface.co/reasonrag/Qwen2.5-7B-Instruct-RAG-Lora)
 
 ReasonRAG achieves superior performance on five benchmark datasets using only 5k training instances, significantly fewer than the 90k training instances required by Search-R1.
 
@@ -27,7 +27,7 @@ We employ process-supervised RL to enhance Agentic RAG capabilities:
 3. Agentic RAG Inference
 
 # Data
-We randomly data from PopQA, HotpotQA, 2WikimultihopQA to generate process-supervised preference data. Then, we use GPT-4o as the policy model to generate rollout data. The generated process-supervised data, namely RAG-ProGuide is available at:  [https://huggingface.co/datasets/wlzhang98/RAG_ProGuide](https://huggingface.co/datasets/wlzhang98/RAG_ProGuide)
+We randomly data from PopQA, HotpotQA, 2WikimultihopQA to generate process-supervised preference data. Then, we use GPT-4o as the policy model to generate rollout data. The generated process-supervised data, namely RAG-ProGuide is available at: [https://huggingface.co/datasets/reasonrag/RAG_ProGuide](https://huggingface.co/datasets/reasonrag/RAG_ProGuide)
 
 # Quick Start
 ## Environment Settings
