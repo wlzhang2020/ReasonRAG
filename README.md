@@ -18,7 +18,7 @@ We provide the dataset we constructed and links to our trained models below.
 
 ReasonRAG achieves superior performance on five benchmark datasets using only 5k training instances, significantly fewer than the 90k training instances required by Search-R1.
 
-![Main Results](Mmages/main_results.png)
+![Main Results](images/main_results.png)
 
 # Method
 We employ process-supervised RL to enhance Agentic RAG capabilities:
