@@ -16,6 +16,10 @@ We provide the dataset we constructed and links to our trained models below.
 * **Trained Models:** [Qwen2.5-7B-Instruct-ReasonRAG](https://huggingface.co/wlzhang98/Qwen2.5-7B-Instruct-ReasonRAG)
 * **Trained Lora Models:** [Qwen2.5-7B-Instruct-RAG-Lora](https://huggingface.co/wlzhang98/Qwen2.5-7B-Instruct-RAG-Lora)
 
+ReasonRAG achieves superior performance on five benchmark datasets using only 5k training instances, significantly fewer than the 90k training instances required by Search-R1.
+
+![Main Results](Mmages/main_results.png)
+
 # Method
 We employ process-supervised RL to enhance Agentic RAG capabilities:
 1. Generate process-supervised reward data.
