@@ -1,6 +1,16 @@
 <h1 align="center">ReasonRAG: Enhancing Agentic RAG with Process-Supervised Reinforcement Learning</h1>
 
-# Overview
+<div align="center">
+<a href="https://github.com/RUCAIBox/RLRAG/edit/main//LICENSE"><img src="https://img.shields.io/badge/Code_License-MIT-blue" alt="license"></a>
+<a href="https://github.com/RUCAIBox/RLRAG/edit/main//LICENSE"><img src="https://img.shields.io/badge/Model_License-MIT-blue" alt="license"></a>
+<a href="[https://huggingface.co/collections/yulan-team/yulan-mini-676d214b24376739b00d95f3](https://github.com/RUCAIBox/RLRAG)"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-blue?color=8A2BE2"></a>
+<a href="https://arxiv.org/pdf/2503.05592" target="_blank"><img src=https://img.shields.io/badge/arXiv-b5212f.svg?logo=arxiv></a>
+
+</div>
+
+<h5 align="center"> If you like our project, please give us a star ⭐ on GitHub for the latest update.</h5>
+
+# 💡 Overview
 
 Recent advancements in outcome-supervised Reinforcement Learning (RL), exemplified by OpenAI's O1 and DeepMind's R1, have demonstrated remarkable improvements in language model (LLM) reasoning capabilities. Integrating outcome-supervised RL with search engines presents another promising avenue for boosting LLM reasoning. However, outcome-supervised RL often grapples with challenges such as sparse reward, training instability, and inefficient exploration.
 
@@ -21,16 +31,16 @@ ReasonRAG achieves superior performance on five benchmark datasets using only 5k
 
 ![Main Results](images/main_results.png)
 
-# Method
+# ✨ Method
 We employ process-supervised RL to enhance Agentic RAG capabilities:
 1. Generate process-supervised reward data.
 2. Policy Preference Optimization
 3. Agentic RAG Inference
 
-# Data
+## Data
 We randomly data from PopQA, HotpotQA, 2WikimultihopQA to generate process-supervised preference data. Then, we use GPT-4o as the policy model to generate rollout data. The generated process-supervised data, namely RAG-ProGuide is available at: [https://huggingface.co/datasets/reasonrag/RAG_ProGuide](https://huggingface.co/datasets/reasonrag/RAG_ProGuide)
 
-# Quick Start
+# 🏃 Quick Start
 ## Environment Settings
 Construct [FlashRAG](https://github.com/RUC-NLPIR/FlashRAG) environments:
 ```bash
