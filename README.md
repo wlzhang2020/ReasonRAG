@@ -76,6 +76,7 @@ python -m flashrag.retriever.index_builder \
 Download QA dataset from huggingface [RUC-NLPIR/FlashRAG_datasets](https://huggingface.co/datasets/RUC-NLPIR/FlashRAG_datasets)
 
 ## Data Generation
+> Note: This code generates policy preference data. You can directly use the RAG-ProGuide dataset (linked above!), or run this code to generate your own, or adapt it as needed.
 ```bash
 python data_generation.py --dataset_name popqa --model gpt-4o
 python data_generation.py --dataset_name hotpotqa --model gpt-4o
