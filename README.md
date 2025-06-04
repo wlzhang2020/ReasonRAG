@@ -1,5 +1,11 @@
 <h1 align="center">ReasonRAG: Enhancing Agentic RAG with Process-Supervised Reinforcement Learning</h1>
 
+[![Code License: MIT](https://img.shields.io/badge/Code_License-MIT-007ACC?labelColor=4D4D4D&style=for-the-badge)](https://github.com)
+[![Model License: MIT](https://img.shields.io/badge/Model_License-MIT-007ACC?labelColor=4D4D4D&style=for-the-badge)](https://huggingface.co/reasonrag/Qwen2.5-7B-Instruct-ReasonRAG)
+
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-your--model--name-purple.svg?style=for-the-badge)](https://huggingface.co/your-username/your-model-name)
+[![arXiv](https://img.shields.io/badge/arXiv-2301.00000-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2505.00000)
+
 # Overview
 Recent advancements in outcome-supervised Reinforcement Learning (RL), exemplified by OpenAI's O1 and DeepMind's R1, have demonstrated remarkable improvements in language model (LLM) reasoning capabilities. Integrating outcome-supervised RL with search engines presents another promising avenue for boosting LLM reasoning. However, outcome-supervised RL often grapples with challenges such as sparse reward, training instability, and inefficient exploration.
 
