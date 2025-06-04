@@ -1,6 +1,5 @@
 <h1 align="center">ReasonRAG: Enhancing Agentic RAG with Process-Supervised Reinforcement Learning</h1>
 
-&#128161; 
 # Overview
 
 Recent advancements in outcome-supervised Reinforcement Learning (RL), exemplified by OpenAI's O1 and DeepMind's R1, have demonstrated remarkable improvements in language model (LLM) reasoning capabilities. Integrating outcome-supervised RL with search engines presents another promising avenue for boosting LLM reasoning. However, outcome-supervised RL often grapples with challenges such as sparse reward, training instability, and inefficient exploration.
