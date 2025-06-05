@@ -151,7 +151,7 @@ def process_text(text):
 
     return text
 
-class AutoRAGPipeline(BasicPipeline):
+class ReasonRAGPipeline(BasicPipeline):
     BEGIN_REASONING_PROMPT = """You are an assistant for question answering with access to a retrieval tool. Upon receiving a question, your task is to:
 * Analyze and Decompose the Question: Break the question into smaller, manageable sub-questions to ensure all aspects are addressed.
 * Evaluate Your Knowledge: Assess each sub-question or component:
@@ -343,42 +343,51 @@ Respond briefly and conclude with: So the score is [Score].
         action = node.next_state
         return action
 
-    def get_next_state(self, node: MCTSRAGNode, use_index=False):
-        action = node.next_state
+    def get_next_state(self, parent_node: MCTSRAGNode, use_index=False):
+        action = parent_node.next_state
         if action is None:
             return None
 
         response, node_dict = "", {}
-        thoughts = copy.copy(node.thoughts)
+        thoughts = copy.copy(parent_node.thoughts)
         if action == "begin_reasoning":
-            response, node_dict = self.handle_begin_reasoning(node.question, thoughts)
+            response, node_dict = self.handle_begin_reasoning(parent_node.question, thoughts)
         elif action == "document_analysis":
-            response, node_dict = self.handle_document_analysis(node.question, thoughts)
+            response, node_dict = self.handle_document_analysis(parent_node.question, thoughts)
         elif action == "reasoning":
-            response, node_dict = self.handle_reasoning(node.question, thoughts)
+            response, node_dict = self.handle_reasoning(parent_node.question, thoughts)
         elif action == "answer_generation":
-            response, node_dict = self.handle_answer_generation(node.question, thoughts)
+            response, node_dict = self.handle_answer_generation(parent_node.question, thoughts)
 
-        node_dict["id"] = node.id
-        next_state = self.next_state(action, response, node.step)
-
-        node_id = -1
+        new_child_node_id = -1
         if use_index:
             self.index += 1
-            node_id = self.index
-            node_dict["parent_id"] = node_id
-            node_dict["id"] = node_id
+            new_child_node_id = self.index
 
-        node_next = MCTSRAGNode(node_id, node.S + " " + response, node, node.id, node.step+1,
-                 next_state, node.question, thoughts, node.golden_answers, node_dict)
+        node_dict["id"] = new_child_node_id
+        node_dict["parent_id"] = parent_node.id
+        next_action_state_for_child = self.next_state(action, response, parent_node.step)
+
+        child_node = MCTSRAGNode(
+            new_child_node_id,
+            parent_node.S + " " + response,
+            parent_node,
+            parent_node.id,
+            parent_node.step + 1,
+            next_action_state_for_child,
+            parent_node.question,
+            thoughts,
+            parent_node.golden_answers,
+            node_dict
+        )
 
         if self.prompt_template.check_prompt_length(node_dict["input_prompt"]):
-            node_next.max_tokens_reached = True
+            child_node.max_tokens_reached = True
 
         if use_index:
-            node.add_child(node_next)
+            parent_node.add_child(child_node)
 
-        return node_next
+        return child_node
 
     def get_reward(self, node: MCTSRAGNode):
         pred = extract_answer(node.node_dict["response"])
